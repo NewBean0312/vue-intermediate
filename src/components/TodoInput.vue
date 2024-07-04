@@ -1,7 +1,9 @@
 <template>
-  <div>
-    <input type="text" v-model="newTodoItem" />
-    <button v-on:click="addTodo">add</button>
+  <div class="inputBox shadow">
+    <input type="text" v-model="newTodoItem" v-on:keyup.enter="addTodo" />
+    <span class="addContainer" v-on:click="addTodo">
+      <i class="fa-solid fa-plus"></i>
+    </span>
   </div>
 </template>
 
@@ -14,13 +16,44 @@ export default {
   },
   methods: {
     addTodo: function () {
-      console.log(this.newTodoItem);
       // 저장하는 로직
       localStorage.setItem(this.newTodoItem, this.newTodoItem);
+      this.clearInput();
+    },
+    clearInput: function () {
       this.newTodoItem = "";
     },
   },
 };
 </script>
 
-<style></style>
+<style scoped>
+input:focus {
+  outline: none;
+}
+
+.inputBox {
+  height: 50px;
+  background-color: #fff;
+  line-height: 50px;
+  border-radius: 5px;
+}
+
+.inputBox input {
+  border-style: none;
+  font-size: 0.9rem;
+}
+
+.addContainer {
+  display: block;
+  float: right;
+  width: 3rem;
+  border-radius: 0 5px 5px 0;
+  background: linear-gradient(to right, #6478fb, #8763fb);
+}
+
+.addBtn {
+  color: #fff;
+  vertical-align: middle;
+}
+</style>
