@@ -1,8 +1,11 @@
 <template>
   <div>
     <ul>
-      <li v-for="todoItem in todoItems" v-bind:key="todoItem">
+      <li v-for="todoItem in todoItems" v-bind:key="todoItem" class="shadow">
         {{ todoItem }}
+        <span class="removeBtn">
+          <i class="fa-solid fa-trash"></i>
+        </span>
       </li>
     </ul>
   </div>
@@ -26,4 +29,41 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+ul {
+  margin-top: 0px;
+  padding-left: 0px;
+  list-style-type: none;
+  text-align: left;
+}
+
+li {
+  display: flex;
+  height: 50px;
+  min-height: 50px;
+  margin: 0.5rem 0;
+  border-radius: 5px;
+  background-color: #fff;
+  line-height: 50px;
+}
+
+.removeBtn {
+  margin-left: auto;
+  color: #de4343;
+}
+
+.checkBtn {
+  margin-right: 5px;
+  line-height: 45px;
+  color: #62acde;
+}
+
+.checkBtnCompleted {
+  color: #b3adad;
+}
+
+.textCompleted {
+  text-decoration: line-through;
+  color: #b3adad;
+}
+</style>
