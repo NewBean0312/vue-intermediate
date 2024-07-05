@@ -5,7 +5,7 @@
     <TodoList
       v-bind:propsdata="todoItems"
       v-on:removeTodoItem="removeOneItem"
-      v-on:toggleTodoItem="toggleComplete"
+      v-on:toggleTodoItem="toggleOneItem"
     />
     <TodoFooter />
   </div>
@@ -36,8 +36,8 @@ export default {
       // splice : 배열의 index부터 1개 까지 삭제
       this.todoItems.splice(index, 1);
     },
-    toggleComplete: function (todoItem, index) {
-      todoItem.completed = !todoItem.completed;
+    toggleOneItem: function (todoItem, index) {
+      this.todoItems[index].completed = !this.todoItems[index].completed;
       // 로컬 스토리지의 데이터를 갱신
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
