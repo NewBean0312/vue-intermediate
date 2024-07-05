@@ -27,10 +27,7 @@ export default {
   props: ["propsdata"],
   methods: {
     removeTodo: function (todoItem, index) {
-      // todoItem과 값이 같은 것을 localStorage에서 삭제
-      localStorage.removeItem(todoItem);
-      // splice : 배열의 index부터 1개 까지 삭제
-      this.todoItems.splice(index, 1);
+      this.$emit("removeTodoItem", todoItem, index);
     },
     toggleComplete: function (todoItem, index) {
       todoItem.completed = !todoItem.completed;
