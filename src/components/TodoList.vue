@@ -3,7 +3,7 @@
     <ul>
       <li v-for="todoItem in todoItems" v-bind:key="todoItem" class="shadow">
         {{ todoItem }}
-        <span class="removeBtn">
+        <span class="removeBtn" v-on:click="removeTodo">
           <i class="fa-solid fa-trash"></i>
         </span>
       </li>
@@ -42,6 +42,7 @@ li {
   height: 50px;
   min-height: 50px;
   margin: 0.5rem 0;
+  padding: 0 0.9rem;
   border-radius: 5px;
   background-color: #fff;
   line-height: 50px;
