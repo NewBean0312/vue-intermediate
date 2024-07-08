@@ -11,13 +11,12 @@
       -->
       <!-- slot : 특정 컴포넌트의 일부 UI들을 재사용할 수 있게 하는 것 -->
       <template v-slot:header>
-        <h3>경고!
+        <h3>
+          경고!
           <i class="closeModalBtn fas fa-times" @click="showModal = false"></i>
         </h3>
       </template>
-      <template v-slot:body>
-        아무 것도 입력하지 않으셨습니다.
-      </template>
+      <template v-slot:body> 아무 것도 입력하지 않으셨습니다. </template>
     </Modal>
   </div>
 </template>
@@ -26,14 +25,14 @@
 import Modal from "./common/Modal.vue";
 
 export default {
-  data: function () {
+  data() {
     return {
       newTodoItem: "",
       showModal: false,
     };
   },
   methods: {
-    addTodo: function () {
+    addTodo() {
       if (this.newTodoItem !== "") {
         this.$emit("addTodoItem", this.newTodoItem);
         this.clearInput();
@@ -41,7 +40,7 @@ export default {
         this.showModal = !this.showModal;
       }
     },
-    clearInput: function () {
+    clearInput() {
       this.newTodoItem = "";
     },
   },
