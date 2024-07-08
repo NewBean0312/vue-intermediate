@@ -48,6 +48,7 @@ export default {
     },
   },
   created: function () {
+    // 로컬 스토리지의 값을 todoItems의 배열 안에 저장함
     if (localStorage.length > 0) {
       for (var i = 0; i < localStorage.length; i++) {
         if (localStorage.key(i) !== "loglevel:webpack-dev-server")
