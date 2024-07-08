@@ -9,7 +9,7 @@
         <i
           class="checkBtn fa-solid fa-check"
           v-bind:class="{ checkBtnCompleted: todoItem.completed }"
-          v-on:click="toggleComplete(todoItem, completed)"
+          v-on:click="toggleComplete(todoItem, index)"
         ></i>
         <span v-bind:class="{ textCompleted: todoItem.completed }">{{
           todoItem.item
