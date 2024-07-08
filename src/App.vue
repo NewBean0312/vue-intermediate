@@ -2,11 +2,8 @@
   <div id="app">
     <TodoHeader />
     <TodoInput />
-    <TodoList
-      v-bind:propsdata="todoItems"
-      v-on:toggleTodoItem="toggleOneItem"
-    />
-    <TodoFooter v-on:clearAll="clearAllItems" />
+    <TodoList />
+    <TodoFooter />
   </div>
 </template>
 
@@ -17,26 +14,7 @@ import TodoList from "./components/TodoList.vue";
 import TodoFooter from "./components/TodoFooter.vue";
 
 export default {
-  data() {
-    return {
-      todoItems: [],
-    };
-  },
-  methods: {
-    toggleOneItem(todoItem, index) {
-      this.todoItems[index].completed = !this.todoItems[index].completed;
-      // 로컬 스토리지의 데이터를 갱신
-      localStorage.removeItem(todoItem.item);
-      localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
-    },
-    clearAllItems() {
-      localStorage.clear();
-      this.todoItems = [];
-    },
-  },
-  
   components: {
-    // 컴포넌트 태그 명: 컴포넌트 내용
     TodoHeader,
     TodoInput,
     TodoList,
