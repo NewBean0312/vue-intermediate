@@ -7,7 +7,7 @@
       v-on:removeTodoItem="removeOneItem"
       v-on:toggleTodoItem="toggleOneItem"
     />
-    <TodoFooter />
+    <TodoFooter v-on:clearAll="clearAllItems" />
   </div>
 </template>
 
@@ -41,6 +41,10 @@ export default {
       // 로컬 스토리지의 데이터를 갱신
       localStorage.removeItem(todoItem.item);
       localStorage.setItem(todoItem.item, JSON.stringify(todoItem));
+    },
+    clearAllItems: function () {
+      localStorage.clear();
+      this.todoItems = [];
     },
   },
   created: function () {
