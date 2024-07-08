@@ -60,10 +60,10 @@ export default {
   },
   components: {
     // 컴포넌트 태그 명: 컴포넌트 내용
-    TodoHeader: TodoHeader,
-    TodoInput: TodoInput,
-    TodoList: TodoList,
-    TodoFooter: TodoFooter,
+    TodoHeader,
+    TodoInput,
+    TodoList,
+    TodoFooter,
   },
 };
 </script>
