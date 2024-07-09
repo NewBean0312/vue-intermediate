@@ -9,12 +9,12 @@
         <i
           class="checkBtn fa-solid fa-check"
           v-bind:class="{ checkBtnCompleted: todoItem.completed }"
-          v-on:click="toggleComplete(todoItem, index)"
+          v-on:click="toggleComplete({ todoItem, index })"
         ></i>
         <span v-bind:class="{ textCompleted: todoItem.completed }">{{
           todoItem.item
         }}</span>
-        <span class="removeBtn" v-on:click="removeTodo(todoItem, index)">
+        <span class="removeBtn" v-on:click="removeTodo({ todoItem, index })">
           <i class="fa-solid fa-trash"></i>
         </span>
       </li>
@@ -23,21 +23,17 @@
 </template>
 
 <script>
-import { mapGetters } from "vuex";
+import { mapGetters, mapMutations } from "vuex";
 
 export default {
   methods: {
-    removeTodo(todoItem, index) {
-      this.$store.commit("removeOneItem", { todoItem, index });
-    },
-    toggleComplete(todoItem, index) {
-      this.$store.commit("toggleOneItem", { todoItem, index });
-    },
+    // 헬퍼는 인자를 선언 안해도 호출하는 단에서 인자가 있으면, 넘겨줌
+    ...mapMutations({
+      removeTodo: "removeOneItem",
+      toggleComplete: "toggleOneItem",
+    }),
   },
   computed: {
-    // todoItems() {
-    //   return this.$store.getters.storedTodoItems;
-    // }
     ...mapGetters(["storedTodoItems"]),
   },
 };
